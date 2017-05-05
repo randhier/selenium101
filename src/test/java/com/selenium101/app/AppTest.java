@@ -3,6 +3,8 @@ package com.selenium101.app;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * Unit test for simple App.
@@ -31,8 +33,13 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testApp() throws InterruptedException
     {
+        System.setProperty("webdriver.chrome.driver", "./src/test/java/chromedriverMAC");
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://google.com");
         assertTrue( true );
+        Thread.sleep(5000);
+        driver.quit();
     }
 }
