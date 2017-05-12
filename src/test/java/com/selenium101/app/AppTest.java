@@ -3,7 +3,9 @@ package com.selenium101.app;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
@@ -39,7 +41,11 @@ public class AppTest
         WebDriver driver = new ChromeDriver();
         driver.get("http://google.com");
         assertTrue( true );
-        Thread.sleep(5000);
+        WebElement element = driver.findElement(By.id("lst-ib"));
+        element.sendKeys("memorial day");
+        Thread.sleep(4000);
+        element.clear();
+        element.sendKeys("mother's day");
         driver.quit();
     }
 }
