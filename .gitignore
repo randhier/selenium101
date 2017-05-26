@@ -7,4 +7,6 @@
 log/
 target/
 
-Failed-ScreenCaps/
+*.png
+
+.DS_Store
