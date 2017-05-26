@@ -1,51 +1,40 @@
 package com.selenium101.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import static org.junit.Assert.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    private static WebDriver driver;
+    @BeforeClass
+    public static void beforeClass() throws Exception{
+        System.setProperty("webdriver.chrome.driver", "./src/test/java/chromedriverMAC");
+        driver = new ChromeDriver();
+        driver.get("http://google.com");
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @AfterClass
+    public static void afterClass() {
+        driver.quit();
     }
 
-    /**
-     * Rigourous Test :-)
-     */
+    @Rule
+    public ScreenTest image = new ScreenTest(driver);
+
+    @org.junit.Test
     public void testApp() throws InterruptedException
     {
-        System.setProperty("webdriver.chrome.driver", "./src/test/java/chromedriverMAC");
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://google.com");
-        assertTrue( true );
+        assertTrue(true);
         WebElement element = driver.findElement(By.id("lst-ib"));
-        element.sendKeys("memorial day");
-        Thread.sleep(4000);
         element.clear();
         element.sendKeys("mother's day");
-        driver.quit();
+        driver.findElement(By.cssSelector(".sbico svg")).click();
+        element.sendKeys(Keys.RETURN);
+        Thread.sleep(4000);
+        assertEquals("Mother's Day 2017 in United States of America", driver.findElement(By.cssSelector(".vk_gy.vk_sh.whenis span:nth-of-type(2)")).getText());
     }
 }
