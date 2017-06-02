@@ -26,7 +26,7 @@ public class GooglePage {
         element.sendKeys(Keys.RETURN);
     }
 
-    public String returnString() {
+    public String returnResutl() {
 
         return driver.findElement(resultStringElement).getText();
 
