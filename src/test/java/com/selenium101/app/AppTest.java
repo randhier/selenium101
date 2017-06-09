@@ -37,7 +37,7 @@ public class AppTest {
     public void motherDayTest() throws InterruptedException {
         GooglePage.search("mother's day");
         Thread.sleep(4000);
-        assertEquals("Mother's Day 2017 in United States of America", GooglePage.returnResutl());
+        assertEquals("Mother's Day 2017 in United States of America", GooglePage.returnResult());
 
     }
 
