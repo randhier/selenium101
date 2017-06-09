@@ -1,9 +1,6 @@
 package com.selenium101.app.pageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 public class GooglePage {
 
@@ -26,12 +23,17 @@ public class GooglePage {
         element.sendKeys(Keys.RETURN);
     }
 
-    public String returnResutl() {
-
+    public String returnResult() {
         return driver.findElement(resultStringElement).getText();
-
     }
 
-
-
+    public void highlight(By selector) {
+        WebElement styleElement = driver.findElement(selector);
+//        String originalStyle = styleElement.getAttribute("style");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript( "arguments[0].setAttribute(arguments[1], arguments[2])",
+                styleElement,
+                "style",
+                "border: 2px solid red; border-style: dashed;");
+    }
 }
