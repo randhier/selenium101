@@ -6,3 +6,6 @@ mvn clean install -Dmaven.test.skip=true
 
 ## Run test
 mvn test
+
+## ToDos
+Timer for highlight
