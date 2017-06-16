@@ -19,6 +19,7 @@ public class GooglePage {
         WebElement element = driver.findElement(searchElement);
         element.clear();
         element.sendKeys(searchTerm);
+        highlight(searchButtonElement);
         driver.findElement(searchButtonElement).click();
         element.sendKeys(Keys.RETURN);
     }
@@ -29,11 +30,26 @@ public class GooglePage {
 
     public void highlight(By selector) {
         WebElement styleElement = driver.findElement(selector);
-//        String originalStyle = styleElement.getAttribute("style");
+        executor(styleElement,"border: 2px solid red; border-style: dashed;");
+    }
+
+    public void highlight(By selector, int timer) {
+        WebElement styleElement = driver.findElement(selector);
+        String originalStyle = styleElement.getAttribute("style");
+        highlight(selector);
+        try {
+            Thread.sleep(timer);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        executor(styleElement, originalStyle);
+    }
+
+    private void executor(WebElement element, String style){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript( "arguments[0].setAttribute(arguments[1], arguments[2])",
-                styleElement,
+                element,
                 "style",
-                "border: 2px solid red; border-style: dashed;");
+                style);
     }
 }
