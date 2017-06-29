@@ -1,6 +1,6 @@
 package com.selenium101.app;
 
-import com.selenium101.app.pageObject.GooglePage;
+import com.selenium101.app.pageObject.GoogleSearchPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AppTest {
     private static WebDriver driver;
-    private GooglePage GooglePage;
+    private GoogleSearchPage GooglePage;
 
     @BeforeClass
     public static void beforeClass() throws Exception {
@@ -21,7 +21,8 @@ public class AppTest {
 
     @Before
     public void setup() {
-        GooglePage = new GooglePage(driver);
+        GooglePage = new GoogleSearchPage(driver);
+
         driver.get("http://google.com");
     }
 
