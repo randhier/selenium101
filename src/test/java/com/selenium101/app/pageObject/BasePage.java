@@ -2,30 +2,12 @@ package com.selenium101.app.pageObject;
 
 import org.openqa.selenium.*;
 
-public class GooglePage {
+public class BasePage {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
-    private static By searchElement = By.id("lst-ib");
-    private static By searchButtonElement = By.cssSelector(".sbico svg");
-    private static By resultStringElement = By.cssSelector(".vk_gy.vk_sh.whenis span:nth-of-type(2)");
-
-
-    public GooglePage(WebDriver driver){
+    public BasePage(WebDriver driver){
         this.driver = driver;
-    }
-
-    public void search(String searchTerm) {
-        WebElement element = driver.findElement(searchElement);
-        element.clear();
-        element.sendKeys(searchTerm);
-        highlight(searchButtonElement);
-        driver.findElement(searchButtonElement).click();
-        element.sendKeys(Keys.RETURN);
-    }
-
-    public String returnResult() {
-        return driver.findElement(resultStringElement).getText();
     }
 
     public void highlight(By selector) {
@@ -52,4 +34,6 @@ public class GooglePage {
                 "style",
                 style);
     }
+
+
 }
