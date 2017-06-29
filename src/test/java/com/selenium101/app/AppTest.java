@@ -1,6 +1,5 @@
 package com.selenium101.app;
 
-import com.selenium101.app.pageObject.BasePage;
 import com.selenium101.app.pageObject.GoogleSearchPage;
 import org.junit.AfterClass;
 import org.junit.Before;
