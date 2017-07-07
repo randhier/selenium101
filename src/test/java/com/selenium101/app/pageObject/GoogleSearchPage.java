@@ -17,6 +17,12 @@ public class GoogleSearchPage extends BasePage {
 
     }
 
+    public String returnResult () {
+
+        return returnText(resultStringElement);
+
+    }
+
     public void search(String searchTerm) {
         WebElement element = driver.findElement(searchElement);
         element.clear();
@@ -26,9 +32,7 @@ public class GoogleSearchPage extends BasePage {
         element.sendKeys(Keys.RETURN);
     }
 
-    public String returnResult() {
-        return driver.findElement(resultStringElement).getText();
-    }
+
 
 
 }
