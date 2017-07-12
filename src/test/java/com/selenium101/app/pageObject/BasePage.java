@@ -35,5 +35,9 @@ public class BasePage {
                 style);
     }
 
+    public String returnText(By selector) {
+        return driver.findElement(selector).getText();
+    }
+
 
 }
