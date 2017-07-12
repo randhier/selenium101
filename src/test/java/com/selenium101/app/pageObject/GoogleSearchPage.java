@@ -11,6 +11,8 @@ public class GoogleSearchPage extends BasePage {
     private static By searchElement = By.id("lst-ib");
     private static By searchButtonElement = By.cssSelector(".sbico svg");
     private static By resultStringElement = By.cssSelector(".vk_gy.vk_sh.whenis span:nth-of-type(2)");
+    private static By settingsElement = By.id("fsettl");
+    private static By searchSetting = By.linkText("Search settings");
 
     public GoogleSearchPage(WebDriver driver){
         super(driver);
@@ -33,6 +35,10 @@ public class GoogleSearchPage extends BasePage {
     }
 
 
-
-
+    public void clickSettings() {
+        WebElement settingPop = driver.findElement(settingsElement);
+        settingPop.click();
+        WebElement searchSettingElement = driver.findElement(searchSetting);
+        searchSettingElement.click();
+    }
 }

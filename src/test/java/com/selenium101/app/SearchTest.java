@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class AppTest {
+public class SearchTest {
     private static WebDriver driver;
     private GoogleSearchPage GooglePage;
 
