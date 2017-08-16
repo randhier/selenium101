@@ -12,6 +12,7 @@ public class SettingsTest {
     private static WebDriver driver;
     private GoogleSearchPage GooglePage;
 
+
     @BeforeClass
     public static void beforeClass() throws Exception {
         System.setProperty("webdriver.chrome.driver", "./src/test/java/chromedriverMAC");
@@ -35,6 +36,8 @@ public class SettingsTest {
     @org.junit.Test
     public void settingsTest() throws InterruptedException {
         GooglePage.clickSettings();
+        GooglePage.clickLanguageLink();
+        GooglePage.clickDutch();
     }
 
 }

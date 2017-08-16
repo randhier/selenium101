@@ -35,6 +35,12 @@ public class BasePage {
                 style);
     }
 
+    public void clickElement(By selector) {
+
+        WebElement element = driver.findElement(selector);
+        element.click();
+    }
+
     public String returnText(By selector) {
         return driver.findElement(selector).getText();
     }

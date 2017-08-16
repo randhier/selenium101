@@ -13,16 +13,18 @@ public class GoogleSearchPage extends BasePage {
     private static By resultStringElement = By.cssSelector(".vk_gy.vk_sh.whenis span:nth-of-type(2)");
     private static By settingsElement = By.id("fsettl");
     private static By searchSetting = By.linkText("Search settings");
+    private static By languageLink = By.linkText("Languages");
+    private static By dutch = By.cssSelector(".jfk-radiobutton-radio");
 
     public GoogleSearchPage(WebDriver driver){
         super(driver);
-
     }
 
     public String returnResult () {
-
         return returnText(resultStringElement);
-
+    }
+    public void clickLanguageLink () {
+        clickElement(languageLink);
     }
 
     public void search(String searchTerm) {
@@ -36,9 +38,11 @@ public class GoogleSearchPage extends BasePage {
 
 
     public void clickSettings() {
-        WebElement settingPop = driver.findElement(settingsElement);
-        settingPop.click();
-        WebElement searchSettingElement = driver.findElement(searchSetting);
-        searchSettingElement.click();
+        clickElement(settingsElement);
+        clickElement(searchSetting);
+    }
+
+    public void clickDutch() {
+        clickElement(dutch);
     }
 }
